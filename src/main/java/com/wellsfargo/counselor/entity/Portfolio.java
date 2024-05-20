@@ -1,13 +1,11 @@
 package com.wellsfargo.counselor.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ForeignKey;
-import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.*;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Portfolio {
@@ -15,6 +13,10 @@ public class Portfolio {
     @Id
     @GeneratedValue()
     private long portfolioId;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "security_id", referencedColumnName = "securityId")
+    private List<Security> securities;
 
     @Column(nullable = false)
     private long clientId;
@@ -33,10 +35,6 @@ public class Portfolio {
 
     public long getPortfolioId() {
         return portfolioId;
-    }
-
-    public long getclientId() {
-        return clientId;
     }
 
     public LocalDateTime getCreationDate() {
