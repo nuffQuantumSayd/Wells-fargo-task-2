@@ -26,8 +26,7 @@ public class Portfolio {
 
     }
 
-    public Portfolio(long portfolioId, long clientId, LocalDateTime creationDate) {
-        this.portfolioId = portfolioId;
+    public Portfolio(long clientId, LocalDateTime creationDate) {;
         this.clientId = clientId;
         this.creationDate = creationDate;
     }

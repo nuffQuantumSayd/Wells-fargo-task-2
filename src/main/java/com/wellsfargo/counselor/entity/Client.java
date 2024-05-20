@@ -33,9 +33,8 @@ public class Client {
     protected Client() {
 
     }
-    public Client(long cId, long aId, String fName, String lName,
+    public Client(long aId, String fName, String lName,
                   String address, String phone, String email) {
-        clientId = cId;
         advisorId = aId;
         firstName = fName;
         lastName = lName;
