@@ -1,8 +1,6 @@
 package com.wellsfargo.counselor.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.*;
 import org.springframework.data.annotation.Id;
 
 @Entity
@@ -11,6 +9,9 @@ public class Client {
     @Id
     @GeneratedValue()
     private long clientId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Portfolio portfolio;
 
     @Column(nullable = false)
     private long advisorId;
@@ -33,9 +34,8 @@ public class Client {
     protected Client() {
 
     }
-    public Client(long aId, String fName, String lName,
+    public Client(String fName, String lName,
                   String address, String phone, String email) {
-        advisorId = aId;
         firstName = fName;
         lastName = lName;
         this.address = address;
@@ -45,11 +45,6 @@ public class Client {
     //get client id
     public long getClientId() {
         return clientId;
-    }
-
-    //get advisor id
-    public long getAdvisorId() {
-        return advisorId;
     }
 
     //first name getter/setter
