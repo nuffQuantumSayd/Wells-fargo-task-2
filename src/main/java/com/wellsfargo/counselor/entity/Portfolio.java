@@ -20,4 +20,13 @@ public class Portfolio {
     @Column(nullable = false)
     private Date creationDate;
 
+    protected Portfolio() {
+
+    }
+
+    public Portfolio(long portfolioId, long clientId, Date creationDate) {
+        this.portfolioId = portfolioId;
+        this.clientId = clientId;
+        this.creationDate = creationDate;
+    }
 }
